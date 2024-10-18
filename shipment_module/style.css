@@ -1,0 +1,234 @@
+/* SET PICKUP TASK STATUS */
+
+.shipment-list-status{
+    padding: 10px 30px;
+    background-color: white;
+    border-radius: 30px;
+    font-size: 12px;
+    box-shadow: 4px 6px 6px -1px rgba(0,0,0,0.32);
+    -webkit-box-shadow: 4px 6px 6px -1px rgba(0,0,0,0.32);
+    -moz-box-shadow: 4px 6px 6px -1px rgba(0,0,0,0.32);
+}
+
+.shipment-waiting-status{
+    color: #DE9034 !important;
+}
+
+.shipment-on-progress-status{
+    color: #0066FF !important;
+}
+
+.shipment-done-status{
+    color: #38DE34 !important;
+}
+
+/* SET PICKUP TASK STATUS */
+
+/* SET BOX SHADOW VARIETY */
+
+.box-shadow-with-thin-border{
+    border: 1px solid rgba(144,146,148,0.3);
+    box-shadow: 4px 6px 6px -1px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 4px 6px 6px -1px rgba(0,0,0,0.1);
+    -moz-box-shadow: 4px 6px 6px -1px rgba(0,0,0,0.1);
+}
+
+.regular-box-shadow-with-thin-border{
+    border: 1px solid rgba(144,146,148,0.3);
+    -webkit-box-shadow: 1px 12px 21px -7px rgba(0,0,0,0.57);
+    -moz-box-shadow: 1px 12px 21px -7px rgba(0,0,0,0.57);
+    box-shadow: 1px 12px 21px -7px rgba(0,0,0,0.57);
+}
+
+.large-box-shadow-with-thin-border{
+    border: 1px solid rgba(144,146,148,0.3);
+    -webkit-box-shadow: 1px 23px 14px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 1px 23px 14px -10px rgba(0,0,0,0.57);
+    box-shadow: 1px 23px 14px -10px rgba(0,0,0,0.57);
+}
+
+/* SET BOX SHADOW VARIETY */
+
+.ljr-custom-btn{
+    width: 100%;
+    background-color: #2C4074;
+    border-radius: 20px;
+    padding: 12px;
+    color: white;
+    font-weight: 700;
+}
+
+.express-tag{
+    font-size: 12px;
+    padding: 5px 10px;
+    color: white !important;
+    background-color: #F81010 !important;
+}
+
+.fa-box{
+    color: #666666;
+}
+
+/* SET DISPLAY CLASS */
+.dflex{
+    display: flex !important;
+}
+
+.dblock{
+    display: block !important;
+}
+
+.dline-block{
+    display: inline-block !important;
+}
+
+.dnone{
+    display: none;
+}
+/* SET DISPLAY CLASS */
+
+.align-item-c{
+    align-items: center;
+}
+.align-item-s{
+    align-items: start;
+}
+
+.justify-content-sb{
+    justify-content: space-between;
+}
+
+.justify-content-c{
+    justify-content: center;
+}
+
+.justify-content-s{
+    justify-content: start;
+}
+
+.onHover:hover{
+    transition: 0.3s ease-in-out;
+    opacity: 0.8;
+}
+
+.opacity-50{
+    opacity: 0.5;
+}
+
+.position-relative{
+    position: relative;
+}
+
+::placeholder{
+    color: #B7B7B7;
+}
+
+.border-rounded{
+    border-radius: 10px;
+}
+
+hr.line-boundaries{
+    height: 2px;
+    background-color: #DADADA;
+    border: none;
+    outline: none;
+}
+
+/* SET COLOR SECTION & ON HOVER*/
+.bg-dark-blue{
+    background-color: #2C4074;
+    transition: 0.4s ease-in-out;
+}
+
+.bg-dark-blue:hover{
+    background-color: #3c58a1;
+}
+
+.bg-blue-tosca{
+    background-color: #C4E0E3 !important;
+    transition: 0.4s ease-in-out;
+}
+
+.bg-blue-tosca:hover{
+    background-color: #c2ebf0 !important;
+}
+
+.bg-light-purple-gradient-radiant{
+    background: radial-gradient(circle, rgba(160,87,254,1) 0%, rgba(114,66,248,1) 100%);
+    transition: 0.4s ease-in-out;
+}
+
+.bg-light-blue-gradient-radiant{
+    background: radial-gradient(circle, rgba(87,174,254,1) 0%, rgba(107,113,255,1) 100%);
+    transition: 0.4s ease-in-out;
+}
+
+.bg-light-purple-gradient-radiant:hover, .bg-light-blue-gradient-radiant:hover{
+    opacity: 0.8;
+}
+
+.bg-dark-red{
+    transition: 0.4s ease-in-out;
+    background-color: #DB1010;
+}
+
+.bg-dark-red:hover{
+    background-color: #e84646;
+}
+
+/* SET COLOR SECTION */
+
+/* SET SCROLL OVERFLOW */
+.overflow-y-scroll{
+    overflow-y: scroll;
+}
+
+.overflow-y-hidden{
+    overflow-y: hidden;
+}
+/* SET SCROLL OVERFLOW */
+
+.error-message-shipment{
+    padding: 10px 0px;
+    margin: 5px 0px;
+    background-color: #F8D7DA;
+    color: #721C24;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.success-message-shipment{
+    padding: 10px 0px;
+    margin: 5px 0px;
+    background-color: #D4EDDA;
+    color: #155759;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.info-message-shipment{
+    padding: 10px 0px;
+    margin: 5px 0px;
+    background-color: #D1ECF1;
+    color: #4B5478;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+/* SET ROTATION CLASS */
+
+.rotate-180-deg{
+    transform: rotate(180deg);
+}
+
+/* SET ROTATION CLASS */
+
+i{
+    transition: 0.3s ease-in-out;
+}
+
+
+input:disabled{
+    cursor: not-allowed;
+    background-color: #e0e0e0 !important;
+}
