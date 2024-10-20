@@ -18,6 +18,8 @@ function addComponentVolMatrixService(index, type, dataID) {
                 <input id="${type}VolMatrixLebar${index}" type="number" data-id="${dataID}" data-service="${type}" data-increment="${index}" placeholder="L"><span>X</span>
                 <input id="${type}VolMatrixTinggi${index}" type="number" data-id="${dataID}" data-service="${type}" data-increment="${index}" placeholder="T">
             </div>
+            
+            <hr class="line-boundaries">
         </div>
     `;
 }

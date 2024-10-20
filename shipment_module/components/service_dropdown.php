@@ -46,7 +46,7 @@
     }
     
     @media only screen and (max-width: 600px) {
-        .matrix-dimension-container > div{
+        .matrix-dimension-container .vol-matrix-input, .matrix-dimension-container .dimension-input{
             display: block !important;
         }
 

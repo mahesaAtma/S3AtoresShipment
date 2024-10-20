@@ -27,6 +27,8 @@
                 <input id="<?= $primexService ?>VolMatrixLebar0" type="number" data-id="<?= $popupId ?>" data-service="<?= $primexService ?>" data-increment="0" placeholder="L"><span> X </span>
                 <input id="<?= $primexService ?>VolMatrixTinggi0" type="number" data-id="<?= $popupId ?>" data-service="<?= $primexService ?>" data-increment="0" placeholder="T">
             </div>
+            
+            <hr class="line-boundaries">
         </div>
     
         <a id="tambahVolMatrix" href="#" style="align-items:end; display:block; text-align:right;" data-service="<?= $primexService ?>" data-id="<?= $popupId ?>">+ Tambah Vol Matrix Lain</a>

@@ -27,7 +27,10 @@
                 <input id="<?= $regulerService ?>VolMatrixLebar0" type="number" data-id="<?= $popupId ?>" data-service="<?= $regulerService ?>" data-increment="0" placeholder="L"><span> X </span>
                 <input id="<?= $regulerService ?>VolMatrixTinggi0" type="number" data-id="<?= $popupId ?>" data-service="<?= $regulerService ?>" data-increment="0" placeholder="T">
             </div>
+            
+            <hr class="line-boundaries">
         </div>
+        
     
         <a id="tambahVolMatrix" href="#" style="align-items:end; display:block; text-align:right;" data-service="<?= $regulerService ?>" data-id="<?= $popupId ?>">+ Tambah Vol Matrix Lain</a>
         <a id="kurangVolMatrix" href="#" style="align-items:end; display:block; text-align:right; color:#DB1010;" data-service="<?= $regulerService ?>" data-id="<?= $popupId ?>">- Kurang Vol Matrix Lain</a>
