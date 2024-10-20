@@ -118,6 +118,9 @@ function saveVolMatrix(volMatrixData, indexVolMatrix) {
 
         volMatrixData[volMatrixType + VolMatrixID] = [];
 
+        let currentVolMatrixJmlhKoli = 0;
+        let maxJmlhKoli = $(`#component-${volMatrixType}-service-${VolMatrixID}`).find(`input#${volMatrixType}InputJumlahKoli`).val();
+
         for (let volMatrixI = 0; volMatrixI < currentVolMatrixID; volMatrixI++) {
             volMatrixData[volMatrixType + VolMatrixID].push({
                 dimension: {
@@ -128,9 +131,19 @@ function saveVolMatrix(volMatrixData, indexVolMatrix) {
                 jumlah_koli: $(currMatrixPositionElement + ` #${volMatrixType}VolMatrixJumlahKoli` + volMatrixI).val(),
                 berat_asli: $(currMatrixPositionElement + ` #${volMatrixType}VolMatrixBeratAsli` + volMatrixI).val()
             })
+
+            currentVolMatrixJmlhKoli += parseInt($(currMatrixPositionElement + ` #${volMatrixType}VolMatrixJumlahKoli` + volMatrixI).val());
         }
 
-        popupSwalFireInfo(['Vol Matrix data berhasil disimpan!']);
+        console.log(currentVolMatrixJmlhKoli);
+        
+
+        if (currentVolMatrixJmlhKoli > maxJmlhKoli) {
+            volMatrixData[volMatrixType + VolMatrixID] = [];
+            popupSwalFireError(['Jumlah koli pada vol matrix tidak boleh lebih besar dari jumlah koli utama!']);
+        }else{
+            popupSwalFireInfo(['Vol Matrix data berhasil disimpan!']);
+        }
     });
 }
 

@@ -394,9 +394,14 @@ function insertTrxShipmentEntryD1Service($data, $dbconn, $nowDatetime, $orderPic
 
     $volMatrixArray = isset($serviceData['vol_matrix']) ? $serviceData['vol_matrix'] : [];
 
+    $jumlahKoliMain = (int) $serviceData['jumlah_koli'];
+    $jumlahKoliVolMatrix = 0;
+
     if (in_array($serviceData['type'], ['reguler', 'express', 'primex', 'ltl'])) {
         if (count($volMatrixArray) > 0) {
             foreach ($volMatrixArray as $volMatrix) {
+                $jumlahKoliVolMatrix += (int) $volMatrix['jumlah_koli'];
+
                 $volume = ((int) $volMatrix['dimension']['p']) * ((int) $volMatrix['dimension']['l']) * ((int) $volMatrix['dimension']['t']);
                 $volumeDesc = $volMatrix['dimension']['p'] . "x" . $volMatrix['dimension']['l'] . "x" . $volMatrix['dimension']['t'] . " (cm)";
     
@@ -429,6 +434,10 @@ function insertTrxShipmentEntryD1Service($data, $dbconn, $nowDatetime, $orderPic
                     NULL,
                     NULL
                 );";
+            }
+
+            if ($jumlahKoliVolMatrix > $jumlahKoliMain) {
+                return ['success' => false, 'message' => "Jumlah koli pada vol matrix tidak boleh lebih besar dari jumlah koli utama!"];
             }
         }else{
             $queryInsert[] = "INSERT INTO trx_shipment_entry_d1_service (
