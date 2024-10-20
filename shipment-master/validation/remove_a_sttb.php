@@ -28,6 +28,8 @@ function removeSTTB($data, $dbconn) {
     $deleteQuery[] = "DELETE FROM trx_status_sttb WHERE no_sttb = '" . $shipmentDetailRecord->no_sttb . "';";
     $deleteQuery[] = "DELETE FROM trx_shipment_entry_d1_service WHERE trx_shipment_entry_d1_id = " . $shipmentDetailRecord->id . ";";
     $deleteQuery[] = "DELETE FROM trx_shipment_entry_d1 WHERE id = " . $shipmentDetailRecord->id . ";";
+    $deleteQuery[] = "DELETE FROM trx_shipment_entry_d2 WHERE no_sttb = '" . $shipmentDetailRecord->no_sttb . "';";
+    $deleteQuery[] = "DELETE FROM trx_shipment_entry_d3 WHERE no_sttb = '" . $shipmentDetailRecord->no_sttb . "';";
     
     foreach ($deleteQuery as $query) {
         pg_query($dbconn, $query);
