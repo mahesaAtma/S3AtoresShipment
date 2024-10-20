@@ -6,7 +6,7 @@
  * @return {Void}
  */
 function popupSwalFireSuccess(messages, redirect = true){
-    successMessages = messages.map((itm) => `<p class='success-message-shipment'>${itm}</p>`).join('');
+    let successMessages = messages.map((itm) => `<p class='success-message-shipment'>${itm}</p>`).join('');
     Swal.fire({
         title: "Saved!",
         icon: "success",
@@ -27,7 +27,7 @@ function popupSwalFireSuccess(messages, redirect = true){
  * @return {Void}
  */
 function popupSwalFireError(messages){
-    errorMessages = messages.map((itm) => `<p class='error-message-shipment'>${itm}</p>`).join('');
+    let errorMessages = messages.map((itm) => `<p class='error-message-shipment'>${itm}</p>`).join('');
     Swal.fire({
         title: "Oops...",
         icon: "error",
@@ -44,11 +44,11 @@ function popupSwalFireError(messages){
  * @return {Void}
  */
 function popupSwalFireInfo(messages){
-    errorMessages = messages.map((itm) => `<p class='info-message-shipment'>${itm}</p>`).join('');
+    let infoMessages = messages.map((itm) => `<p class='info-message-shipment'>${itm}</p>`).join('');
     Swal.fire({
         title: "Saved",
         icon: "info",
-        html: errorMessages,
+        html: infoMessages,
         showCloseButton: true,
         cancelButtonText: `OK`,
     });

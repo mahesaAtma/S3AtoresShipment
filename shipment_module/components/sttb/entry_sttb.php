@@ -113,7 +113,7 @@
             <hr/>
             <div class="sttb-entry-container">
                 <div class="sttb-entry-input">
-                    <input id="scanQRCodeInput<?= $popupId ?>" data-sttb-type=""type="text" placeholder="Input No STTB" disabled>
+                    <input id="scanQRCodeInput<?= $popupId ?>" class="input-no-sttb" data-sttb-type="" type="text" placeholder="Input No STTB" disabled>
                     <div class="scan-qr-code-shipment" data-id="<?= $popupId ?>">
                         <img src="../images/icon/shipment/scan.png">
                     </div>
@@ -194,6 +194,34 @@
                     }
                 }
             });
+        });
+
+        $('.input-no-sttb').off('keypress').on('keypress', function(e) {
+            if (e.which == '13') {
+                sttbType = $(this).attr('data-sttb-type');
+                noSTTB = $(this).val();
+
+                if (sttbType === '') {
+                    popupSwalFireInfo(['Mohon pilih tipe input sttb terlebih dahulu!'])
+                }else if (noSTTB === '') {
+                    popupSwalFireInfo(['Nomor STTB tidak boleh kosong!'])
+                }else{
+                    $.ajax({
+                        url: "shipment-master/validation/validate-sttb.php",
+                        method: "POST",
+                        data: {no_sttb: noSTTB, sttb_input_type: sttbType},
+                        success: function(response){
+                            response = JSON.parse(response);
+                            
+                            if (response.success) {
+                                popupSwalFireSuccess(response.messages, false);
+                            }else{
+                                popupSwalFireError(response.messages);
+                            }
+                        }
+                    });
+                }
+            }
         });
     });
 </script>
