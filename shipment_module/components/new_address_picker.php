@@ -35,6 +35,7 @@
         right: 25px;
         font-size: 20px;
         cursor: pointer;
+        z-index: 3;
     }
 
     .popup-address-container{
