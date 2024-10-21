@@ -43,6 +43,10 @@ function validateInput($data) {
         $message = "Tolong isi tanggal terlebih dahulu untuk prioritas pengiriman!";
     }
 
+    if (!isset($data['address_receipt_id'])) {
+        $message = "Mohon isi data alamat penerima terlebih dahulu!";
+    }
+
     if (!is_null($message)) {
         return [
             "status" => false,
@@ -108,7 +112,6 @@ function validateOrderPickup($data, $dbconn){
             master.status_task, 
             detail.no_order_pickup, 
             detail.task_no,
-            detail.custsentreceipt_id,
             master.cabang_id,
             master.unit_id
         FROM trx_order_pickup_d1 AS detail
@@ -178,11 +181,11 @@ function insertTrxShipmentEntry($nowDatetime, $noShipment, $payment, $orderPicku
 function insertTrxShipmentEntryD1($data, $dbconn, $nowDate, $nowDatetime, $noShipment, $orderPickup, $customer, $user){
     $serviceData = isset($data['service_data']) ? $data['service_data'] : [];
 
-    if (is_null($orderPickup->custsentreceipt_id)) {
-        return ['success' => false, 'message' => "Harap memasukan data alamat penerima terlebih dahulu!"];
+    if (empty($data['address_receipt_id'])) {
+        return ['success' => false, 'message' => "Data alamat penerima tidak boleh kosong!"];
     }
     
-    $sendReceiptQuery = "SELECT id, alamat, nama_pic, phone_pic FROM ms_cust_send_receipt WHERE id = " . $orderPickup->custsentreceipt_id . ";";
+    $sendReceiptQuery = "SELECT id, alamat, nama_pic, phone_pic FROM ms_cust_send_receipt WHERE id = " . pg_escape_string($data['address_receipt_id']) . ";";
     $sendReceipt = pg_fetch_object(pg_query($dbconn, $sendReceiptQuery));
     if (!$sendReceipt) {
         return ['success' => false, 'message' => "Alamat penerima tidak dapat ditemukan!"];

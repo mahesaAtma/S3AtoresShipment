@@ -210,12 +210,12 @@
             if (Object.keys(serviceData).length == 0) {
                 errorMessages.push('Mohon isi data service terlebih dahulu');
             }
-            if (Object.keys(requestData).length == 0) {
-                errorMessages.push('Mohon isi data request terlebih dahulu');
-            }
-            if (Object.keys(documentData).length == 0) {
-                errorMessages.push('Mohon isi data dokumen terlebih dahulu');
-            }
+            // if (Object.keys(requestData).length == 0) {
+            //     errorMessages.push('Mohon isi data request terlebih dahulu');
+            // }
+            // if (Object.keys(documentData).length == 0) {
+            //     errorMessages.push('Mohon isi data dokumen terlebih dahulu');
+            // }
 
             if (errorMessages.length > 0) {
                 popupSwalFireError(errorMessages);
@@ -235,6 +235,7 @@
                 prioritas_pengiriman: $('input#prioritaspengirimanshipmentinformasiInput_' + simpanShipmentID).prop('checked') ? 'Y' : 'N',
                 tgl_prioritas_pengiriman: $('input#modalSwitchCalendar' + simpanShipmentID).val(),
                 barang_susulan: $('input#apakahadabarangsusulanInput_' + simpanShipmentID).prop('checked') ? 'Y' : 'N',
+                address_receipt_id: $('input#addressReceiptID' + simpanShipmentID).val()
             };
 
             Swal.fire({

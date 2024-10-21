@@ -195,8 +195,13 @@
                         $(`.${dataParent}`).append(listAdressPickerComponent(response.data, dataID))
                         $(`.${dataParent}` + ' .popup-address-item').off('mousedown').mousedown(function() {
                             let dataID = $(this).attr('data-id');
-                            let currentCustSendReceiptID = $(this).find('input#addressInputID' + dataID).val();
-                            updateCustSendReceipt(currentCustSendReceiptID, dataID)
+                            updateCustSendReceipt(
+                                $(this).find('input#addressInputID' + dataID).val(), 
+                                $(this).find('p#addressInputNama' + dataID).text(), 
+                                $(this).find('p#addressInputAlamat' + dataID).text(), 
+                                $(this).find('p#addressInputPhone' + dataID).text(), 
+                                dataID
+                            )
                         });
                     }else{
                         $(`.${dataParent}`).append("<button>There's an error occured!</button>")
@@ -208,8 +213,14 @@
     
     $('.popup-address-item-container .popup-address-item').off('mousedown').mousedown(function() {
         let dataID = $(this).attr('data-id');
-        let currentCustSendReceiptID = $(this).find('input#addressInputID' + dataID).val();
-        updateCustSendReceipt(currentCustSendReceiptID, dataID)
+
+        updateCustSendReceipt(
+            $(this).find('input#addressInputID' + dataID).val(), 
+            $(this).find('p#addressInputNama' + dataID).text(), 
+            $(this).find('p#addressInputAlamat' + dataID).text(), 
+            $(this).find('p#addressInputPhone' + dataID).text(), 
+            dataID
+        )
     });
 
     /**
@@ -254,33 +265,27 @@
         return component;
     }
 
-    function updateCustSendReceipt(custsendreceiptId, popupId) {
-        dataEntry = {
-            custsendreceipt_id: custsendreceiptId,
-            order_pickup_d1_id: $('input#orderPickupDetailID' + popupId).val()
-        };
-
+    function updateCustSendReceipt(id, label, alamat, nomor, popupId) {
+        console.log("======================================");
+        console.log(id);
+        console.log(label);
+        console.log(alamat);
+        console.log(nomor);
+        console.log(popupId);
+        console.log("======================================");
+        
         Swal.fire({
-            title: "Yakin ubah alamat penerima?",
+            title: "Yakin pilih alamat penerima?",
             showDenyButton: true,
             confirmButtonText: "Ya",
             denyButtonText : 'Batal'
         }).then((result) => {
             if (result.isConfirmed) {
-                $.ajax({
-                    url: "shipment-master/validation/address-update.php",
-                    method: "POST",
-                    data: dataEntry,
-                    success: function(response){
-                        response = JSON.parse(response);
-                        
-                        if (response.success) {
-                            popupSwalFireSuccess(response.messages);
-                        }else{
-                            popupSwalFireError(response.messages);
-                        }
-                    }
-                });
+                $('ul#addressPickerResult' + popupId + ' input').val(id);
+                $('ul#addressPickerResult' + popupId + ' li#addressLabelID span').text(label);
+                $('ul#addressPickerResult' + popupId + ' li#addressAlamatID span').text(alamat);
+                $('ul#addressPickerResult' + popupId + ' li#addressNomorID span').text(nomor);
+                $('.popup-address-picker-id-' + popupId).removeClass('popup-address-picker-show');
             }
         });
     }

@@ -70,10 +70,6 @@
     }
 </style>
 
-<?php
-    $custSendReceipt = $shipmentObj->getMasterCustomerSendReceipt($pickupData['custsentreceipt_id']);
-?>
-
 <div class="address-picker">
     <div class="sttb-entry-address box-shadow-with-thin-border mt-3" data-id="<?= $popupId ?>">
         <img class="ml-2" src="../images/icon/shipment/green-map.png">
@@ -86,9 +82,10 @@
     <div class="dflex align-item-c justify-content-sb mt-2 ml-4">
         <div>
             <ul id="addressPickerResult<?= $popupId ?>">
-                <li>Nama Send Receipt : <?= $custSendReceipt ? $custSendReceipt->nama_send_receipt : '-' ?></li>
-                <li>Alamat : <?= $custSendReceipt ? $custSendReceipt->alamat : '-' ?></li>
-                <li>Nomor : <?= $custSendReceipt ? $custSendReceipt->phone_pic : '-' ?></li>
+                <input id="addressReceiptID<?= $popupId ?>" type="hidden" value="">
+                <li id="addressLabelID">Nama Send Receipt : <span>-</span></li>
+                <li id="addressAlamatID">Alamat : <span>-</span></li>
+                <li id="addressNomorID">Nomor : <span>-</span></li>
             </ul>
         </div>
     </div>

@@ -372,7 +372,7 @@ class ShipmentQuery{
      * Get list customer send receipts for a customer
      */
     public function getListCustomerSendReceipt($customerID){
-        $query = "SELECT id, nama_send_receipt, alamat, phone_pic FROM ms_cust_send_receipt WHERE customer_id = " . $customerID;
+        $query = "SELECT id, nama_send_receipt, alamat, phone_pic FROM ms_cust_send_receipt WHERE jenis_alamat = 'RECEIPT' AND customer_id = " . $customerID;
         return $this->fetchAllRow($query);
     }
 
