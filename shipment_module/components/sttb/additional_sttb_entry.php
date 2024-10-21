@@ -228,16 +228,23 @@
                 <button class="input-elektronik-sttb bg-light-blue-gradient-radiant" data-id="<?= $popupId ?>"><img src="../images/icon/shipment/bill.png">E-STTB</button>
             </div>
             <hr/>
+
             <div class="sttb-entry-container">
                 <div class="sttb-entry-input">
-                    <input id="scanQRCodeInput<?= $popupId ?>" data-sttb-type=""type="text" placeholder="Input No STTB" disabled>
+                    <input id="scanQRCodeInput<?= $popupId ?>" class="input-no-sttb" data-sttb-type=""type="text" placeholder="Input No STTB" disabled>
                     <div class="scan-qr-code-shipment" data-id="<?= $popupId ?>">
                         <img src="../images/icon/shipment/scan.png">
                     </div>
                 </div>
+    
+                <h6 class="mt-4 ml-4">Alamat Penerima</h6>
+                <?php include('./shipment_module/components/address_picker.php') ?>
             </div>
-        </div>
 
+
+        </div>
+        
+        <hr/>
         <div class="add-service-popup add-service-popup-wrapper-<?= $popupId ?> mt-4">
             <div class="add-service">
                 <span>Pilih Service</span>
@@ -386,6 +393,8 @@
 
 <script>
     $(document).ready(function(){
+        sttbPressEnter();
+
         // Service Section
         volMatrixData = {};
         indexVolMatrix = {};
@@ -515,10 +524,9 @@
                 prioritas_pengiriman: $('input#prioritaspengirimanshipmentinformasiInput_' + simpanShipmentID).prop('checked') ? 'Y' : 'N',
                 tgl_prioritas_pengiriman: $('input#modalSwitchCalendar' + simpanShipmentID).val(),
                 barang_susulan: $('input#apakahadabarangsusulanInput_' + simpanShipmentID).prop('checked') ? 'Y' : 'N',
+                address_receipt_id: $('input#addressReceiptID' + simpanShipmentID).val()
             };
 
-            console.log(dataEntry);
-            
             Swal.fire({
                 title: "Simpan Shipment Entry?",
                 showDenyButton: false,

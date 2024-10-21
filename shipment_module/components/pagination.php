@@ -93,7 +93,7 @@
         </nav>
 <?php
     }else{
-        echo "<a class='mt-2 mb-4' style='color:red;'>There's an error occured</a>";
+        echo "<a class='mt-2 mb-4' style='color:red;'>Terjadi Kesalahan</a>";
     }
 ?>
 

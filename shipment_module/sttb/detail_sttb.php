@@ -273,7 +273,7 @@
                                                             foreach ($packings as $packing) {
                                                     ?>
                                                             <li> <?= $packing['nama_packing'] ?>
-                                                                <p class="ml-3 mt-3">dimensi : (<?= $packing['dimensi_panjang'] ?>(cm)x<?= $packing['dimensi_lebar'] ?>(cm)x<?= $packing['dimensi_tinggi'] ?>(cm))</p>
+                                                                <p class="ml-3 mt-3">dimensi : <?= $packing['dimensi_panjang'] ?>(cm)x<?= $packing['dimensi_lebar'] ?>(cm)x<?= $packing['dimensi_tinggi'] ?>(cm)</p>
                                                                 <p class="ml-3">harga : <?= $packing['biaya'] ?></p>
                                                                 <p class="ml-3 mb-3">berat : <?= $packing['berat_total'] ?></p>
                                                             </li>
@@ -339,6 +339,10 @@
                 
                 <div class="sttb-popup-container">
                     <?php include('./shipment_module/sttb/additional_sttb_popup.php'); ?>
+                </div>
+
+                <div class="sttb-popup-address-picker-<?= $popupId ?>">
+                    <?php include('./shipment_module/components/new_address_picker.php'); ?>
                 </div>
 
                 <!-- <div class="sttb-address-entry-container-<?= $popupId ?>">

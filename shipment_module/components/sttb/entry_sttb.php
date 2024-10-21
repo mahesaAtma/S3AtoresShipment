@@ -138,6 +138,8 @@
 
 <script>
     $(document).ready(function(){
+        sttbPressEnter();
+        
         $('.btn-sttb-next-trigger').off('click').click(function(){
             sttbNextIndex = $(this).attr('id');
             $('.entry-sttb-popup-wrapper-' + sttbNextIndex).css("display","none");
@@ -196,32 +198,6 @@
             });
         });
 
-        $('.input-no-sttb').off('keypress').on('keypress', function(e) {
-            if (e.which == '13') {
-                sttbType = $(this).attr('data-sttb-type');
-                noSTTB = $(this).val();
 
-                if (sttbType === '') {
-                    popupSwalFireInfo(['Mohon pilih tipe input sttb terlebih dahulu!'])
-                }else if (noSTTB === '') {
-                    popupSwalFireInfo(['Nomor STTB tidak boleh kosong!'])
-                }else{
-                    $.ajax({
-                        url: "shipment-master/validation/validate-sttb.php",
-                        method: "POST",
-                        data: {no_sttb: noSTTB, sttb_input_type: sttbType},
-                        success: function(response){
-                            response = JSON.parse(response);
-                            
-                            if (response.success) {
-                                popupSwalFireSuccess(response.messages, false);
-                            }else{
-                                popupSwalFireError(response.messages);
-                            }
-                        }
-                    });
-                }
-            }
-        });
     });
 </script>

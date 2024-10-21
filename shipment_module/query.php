@@ -14,7 +14,7 @@ class ShipmentQuery{
     }
 
     private function getDriver(){
-        $userQuery = "SELECT id,name FROM usersWHERE id = " . $_SESSION['id_user_login'] . " AND role_id = '119';";
+        $userQuery = "SELECT id,name FROM users WHERE id = " . $_SESSION['id_user_login'] . " AND role_id = '119';";
         $user = pg_fetch_object(pg_query($this->dbconn, $userQuery));
         
         if ($user) {
@@ -64,7 +64,7 @@ class ShipmentQuery{
             LEFT JOIN ms_customers AS mc ON mc.id = CAST(top.customer_id AS INTEGER)
             LEFT JOIN trx_shipment_entry AS tse ON top.no_order_pickup = tse.no_order_pickup
             WHERE tt.tipe_process = 'pickup' 
-            -- AND tt.status_task = '113'
+            AND tt.status_task = '133'
             AND top.status_task IN ('$statusTaskString') 
             AND tt.driver_id = '$this->driverID'
             ORDER BY top.created_at DESC
@@ -80,7 +80,7 @@ class ShipmentQuery{
      * @param string $driverID
      * @return array
      */
-    public function countRequestPickup($statusTask, $driverID = "56c1065f-3915-4fe1-86f6-f6e366b98bca"){
+    public function countRequestPickup($statusTask){
         // Due to Postgres strict rules, char ' is used to join arrays
         $statusTaskString = implode("','", $statusTask);
 
@@ -91,10 +91,11 @@ class ShipmentQuery{
                 JOIN ms_status AS mss ON mss.id = CAST(top.status_task AS INTEGER)
                 LEFT JOIN trx_task AS tt ON top.no_order_pickup = tt.no_ref_process
                 LEFT JOIN ms_customers AS mc ON mc.id = CAST(top.customer_id AS INTEGER)
+                LEFT JOIN trx_shipment_entry AS tse ON top.no_order_pickup = tse.no_order_pickup
                 WHERE tt.tipe_process = 'pickup' 
-                -- AND tt.status_task = '113'
+                AND tt.status_task = '133'
                 AND top.status_task IN ('$statusTaskString') 
-                AND tt.driver_id = '$driverID'
+                AND tt.driver_id = '$this->driverID'
             ) AS total_order_pickup;
         ";
         return $this->fetchAllRow($query);

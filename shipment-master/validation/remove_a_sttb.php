@@ -17,11 +17,21 @@ function removeSTTB($data, $dbconn) {
 
     $shipmentDetailID = $data['shipment_detail_id'];
 
-    $querySelect = "SELECT id,no_sttb FROM trx_shipment_entry_d1 
+    $querySelect = "SELECT id,no_sttb,no_shipment_entry FROM trx_shipment_entry_d1 
         WHERE id = " . pg_escape_string($shipmentDetailID) . ";";
     $shipmentDetailRecord = pg_fetch_object(pg_query($dbconn, $querySelect));
     if (!$shipmentDetailRecord) {
         return ['success' => false, 'message' => "Data nomor shipment tidak dapat ditemukan!"];
+    }
+
+    $totalSTTBQuery = "SELECT id FROM trx_shipment_entry_d1 WHERE no_shipment_entry = '" . $shipmentDetailRecord->no_shipment_entry .  "';";
+    $totalSTTBRecord = pg_fetch_all(pg_query($dbconn, $totalSTTBQuery));
+    if (!$totalSTTBRecord) {
+        return ['success' => false, 'message' => "Data nomor shipment tidak dapat ditemukan!"];
+    }
+    
+    if (count($totalSTTBRecord) <= 1) {
+        return ['success' => false, 'message' => "Untuk nomor sttb terakhir, mohon gunakan fitur batalkan transaksi!"];
     }
 
     $deleteQuery = [];
