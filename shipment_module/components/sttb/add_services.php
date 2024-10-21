@@ -187,7 +187,7 @@
                 <div class="dflex justify-content-sb mt-4">
                     <div class="dflex align-item-s">
                         <i class="fas fa-box mr-3"></i>
-                        <div id="serviceResultMainContent<?= $popupId ?>"></div>
+                        <div id="serviceResultMainContent<?= $popupId ?>" style="list-style-type: none;"></div>
                     </div>
                     <i class="btn-trash-service-result-trigger fa fa-trash mt-4 mr-3" data-id="<?= $popupId ?>" style="color:red; cursor:pointer;"></i>
                 </div>

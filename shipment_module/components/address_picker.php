@@ -80,15 +80,15 @@
 <div class="collapse-info-container address-picker-result-wrapper-<?= $popupId ?>">
     <h6>Informasi Alamat</h6>
     <div class="dflex align-item-c justify-content-sb mt-2 ml-4">
-        <div class="dflex align-item-c justify-content-sb">
+        <div>
             <ul id="addressPickerResult<?= $popupId ?>">
                 <input id="addressReceiptID<?= $popupId ?>" type="hidden" value="">
                 <li id="addressLabelID">Nama Send Receipt : <span>-</span></li>
                 <li id="addressAlamatID">Alamat : <span>-</span></li>
                 <li id="addressNomorID">Nomor : <span>-</span></li>
             </ul>
-            <i id="<?= $popupId ?>" class="btn-address-picker-trash-trigger fa fa-trash mr-2" style="color:red; cursor:pointer;"></i>
         </div>
+        <i id="<?= $popupId ?>" class="btn-address-picker-trash-trigger fa fa-trash mr-2" style="color:red; cursor:pointer;"></i>
     </div>
 </div>
 

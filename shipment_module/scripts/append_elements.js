@@ -36,27 +36,27 @@ function serviceResultComponent(data, type){
 
     if (['reguler', 'express', 'primex', 'ltl'].includes(type)) {
         componentString += `
-            <p>${data.jumlah_koli} Koli</p>
-            <p>Berat asli ${data.berat_asli}kg</p><br>
+            <li>${data.jumlah_koli} Koli</li>
+            <li>Berat asli <span>${data.berat_asli} KG</span></li>
         `;
         
         for (const item of data.vol_matrix) {
             componentString += `
-                <p>${item.jumlah_koli} koli</p>
-                <p>Berat Volume Metric ${item.berat_asli}kg</p>
+                <li>${item.jumlah_koli} Koli</li>
+                <li>Berat Volume Metric <span>${item.berat_asli} KG </span></li>
             `;
         }
     }else if (['fcl', 'ftl'].includes(type)) {
         componentString += `
-            <p>${data.jumlah_koli} Koli</p>
-            <p>Jumlah KG ${data.jumlah_kg}kg</p><br>
-            <p>Jumlah Unit ${data.jumlah_unit}kg</p><br>
-            <p>Jumlah Kubik ${data.jumlah_kubik}kg</p><br>
+            <li>${data.jumlah_koli} Koli</li>
+            <li>Jumlah KG ${data.jumlah_kg} KG</li><br>
+            <li>Jumlah Unit ${data.jumlah_unit} KG</li><br>
+            <li>Jumlah Kubik ${data.jumlah_kubik} KG</li><br>
         `;
     }else if (['lcl'].includes(type)) {
         componentString += `
-            <p>Dimensi : (${data.panjang}cm, ${data.lebar}cm, ${data.tinggi}cm)</p>
-            <p>${data.nama_barang}</p><br>
+            <li>Dimensi : (${data.panjang}cm, ${data.lebar}cm, ${data.tinggi}cm)</li>
+            <li>${data.nama_barang}</li><br>
         `;
     }
 
