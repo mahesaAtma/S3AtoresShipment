@@ -129,7 +129,8 @@
     
             <div class="popup-address-item-container list-address-item-<?= $popupId ?>">
                 <?php
-                    $custSentReceipt = $shipmentObj->getListCustomerSendReceipt(7100480);
+                    // $custSentReceipt = $shipmentObj->getListCustomerSendReceipt(7100480);
+                    $custSentReceipt = $shipmentObj->getListCustomerSendReceipt($pickupData['customer_id']);
                     if ($custSentReceipt) {
                         foreach ($custSentReceipt as $csrItem) {
                 ?>

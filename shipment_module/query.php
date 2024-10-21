@@ -9,8 +9,8 @@ class ShipmentQuery{
     public function __construct($dbconn)
     {
         $this->dbconn = $dbconn;
-        $this->driverID = "eded8381-d798-4004-bd84-0cc1178b562a";
-        // $this->driverID = $this->getDriver();
+        // $this->driverID = "eded8381-d798-4004-bd84-0cc1178b562a";
+        $this->driverID = $this->getDriver();
     }
 
     private function getDriver(){
