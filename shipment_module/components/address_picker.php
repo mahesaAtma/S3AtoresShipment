@@ -80,13 +80,14 @@
 <div class="collapse-info-container address-picker-result-wrapper-<?= $popupId ?>">
     <h6>Informasi Alamat</h6>
     <div class="dflex align-item-c justify-content-sb mt-2 ml-4">
-        <div>
+        <div class="dflex align-item-c justify-content-sb">
             <ul id="addressPickerResult<?= $popupId ?>">
                 <input id="addressReceiptID<?= $popupId ?>" type="hidden" value="">
                 <li id="addressLabelID">Nama Send Receipt : <span>-</span></li>
                 <li id="addressAlamatID">Alamat : <span>-</span></li>
                 <li id="addressNomorID">Nomor : <span>-</span></li>
             </ul>
+            <i id="<?= $popupId ?>" class="btn-address-picker-trash-trigger fa fa-trash mr-2" style="color:red; cursor:pointer;"></i>
         </div>
     </div>
 </div>
@@ -102,5 +103,13 @@
     $('.sttb-entry-address').off('click').click(function() {
         entryAddressID = $(this).attr('data-id');
         $('.popup-address-picker-id-' + entryAddressID).addClass('popup-address-picker-show');
+    });
+
+    $('.btn-address-picker-trash-trigger').off('click').click(function() {
+        let dataID = $(this).attr('id');
+        $('ul#addressPickerResult' + dataID + ' input').val('');
+        $('ul#addressPickerResult' + dataID + ' li#addressLabelID span').text('-');
+        $('ul#addressPickerResult' + dataID + ' li#addressAlamatID span').text('-');
+        $('ul#addressPickerResult' + dataID + ' li#addressNomorID span').text('-');
     });
 </script>

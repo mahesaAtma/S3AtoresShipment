@@ -266,14 +266,6 @@
     }
 
     function updateCustSendReceipt(id, label, alamat, nomor, popupId) {
-        console.log("======================================");
-        console.log(id);
-        console.log(label);
-        console.log(alamat);
-        console.log(nomor);
-        console.log(popupId);
-        console.log("======================================");
-        
         Swal.fire({
             title: "Yakin pilih alamat penerima?",
             showDenyButton: true,
