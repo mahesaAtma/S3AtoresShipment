@@ -207,3 +207,30 @@ function listKecamatanComponent(kecamatans, dataParent){
 
     return componentString;
 }   
+
+/**
+ * Component to append for list address picker
+ * 
+ * @param {Array} data
+ * @param {String} popupId
+ * @returns {String} component
+ */
+function listAdressPickerComponent(data, popupId){
+    let component = '';
+
+    for (const item of data) {
+        component += `
+            <div class="popup-address-item mt-2 box-shadow-with-thin-border dflex align-item-c" data-id="<?= $popupId ?>">
+                <img src="../images/icon/shipment/gmap-icon.png">
+                <div>
+                    <input id="addressInputID${popupId}" type="hidden" value="${item.id}">
+                    <p id="addressInputNama${popupId}">${item.nama_send_receipt == null ? '-' : item.nama_send_receipt}</p>
+                    <p id="addressInputAlamat${popupId}">${item.alamat == null ? '-' : item.alamat}</p>
+                    <p id="addressInputPhone${popupId}">${item.phone_pic == null ? '-' : item.phone_pic}</p>
+                </div>
+            </div>
+        `;
+    }
+
+    return component;
+}

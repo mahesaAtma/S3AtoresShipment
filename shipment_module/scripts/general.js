@@ -53,3 +53,18 @@ function popupSwalFireInfo(messages){
         cancelButtonText: `OK`,
     });
 }
+
+/**
+ * Make delay after any input
+ * Eg: keyup, change, etc
+ * 
+ * @param {Integer} ms 
+ * @returns {Function}
+ */
+function makeDelay(ms) {
+    var timer = 0;
+    return function(callback){
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+    };
+};

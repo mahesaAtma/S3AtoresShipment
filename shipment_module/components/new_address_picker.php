@@ -223,48 +223,6 @@
         )
     });
 
-    /**
-     * Make delay after any input
-     * Eg: keyup, change, etc
-     * 
-     * @param {Integer} ms 
-     * @returns {Function}
-     */
-    function makeDelay(ms) {
-        var timer = 0;
-        return function(callback){
-            clearTimeout (timer);
-            timer = setTimeout(callback, ms);
-        };
-    };
-
-    /**
-     * Component to append for list address picker
-     * 
-     * @param {Array} data
-     * @param {String} popupId
-     * @returns {String} component
-     */
-    function listAdressPickerComponent(data, popupId){
-        let component = '';
-
-        for (const item of data) {
-            component += `
-                <div class="popup-address-item mt-2 box-shadow-with-thin-border dflex align-item-c" data-id="<?= $popupId ?>">
-                    <img src="../images/icon/shipment/gmap-icon.png">
-                    <div>
-                        <input id="addressInputID${popupId}" type="hidden" value="${item.id}">
-                        <p id="addressInputNama${popupId}">${item.nama_send_receipt == null ? '-' : item.nama_send_receipt}</p>
-                        <p id="addressInputAlamat${popupId}">${item.alamat == null ? '-' : item.alamat}</p>
-                        <p id="addressInputPhone${popupId}">${item.phone_pic == null ? '-' : item.phone_pic}</p>
-                    </div>
-                </div>
-            `;
-        }
-
-        return component;
-    }
-
     function updateCustSendReceipt(id, label, alamat, nomor, popupId) {
         Swal.fire({
             title: "Yakin pilih alamat penerima?",
